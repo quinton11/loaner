@@ -1,0 +1,3 @@
+server/.env.dev
+server/.env.prod
+server/node_modules
