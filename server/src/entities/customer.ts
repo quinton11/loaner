@@ -2,7 +2,7 @@ import {
   BaseEntity,
   Entity,
   Column,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
@@ -13,7 +13,7 @@ import { Loan } from "./loan";
 
 @Entity()
 export class Customer extends BaseEntity implements CustomerType {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()

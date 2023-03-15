@@ -3,6 +3,9 @@
 import express from "express";
 import cors from "cors";
 import { connect } from "database/connect";
+import { AuthRouter } from "routes/auth.route";
+import { CustomerRouter } from "routes/user.route";
+import { LoanRouter } from "routes/loan.route";
 
 export default class Server {
   public port: number;
@@ -19,12 +22,16 @@ export default class Server {
 
   async initDatabase() {
     await connect();
+    console.log("Connected to Database");
   }
 
   initMiddleware() {
     this.server.use(cors());
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
+    this.server.use(AuthRouter);
+    this.server.use(CustomerRouter);
+    this.server.use(LoanRouter);
   }
 
   async Listen() {

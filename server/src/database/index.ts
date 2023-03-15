@@ -1,14 +1,15 @@
 /* TypeOrm connection set up */
 import { ConnectionOptions } from "typeorm";
 import { join } from "path";
+import { DBUSER, DB, DBHOST } from "config";
 
 const connectionSrc: ConnectionOptions = {
   type: "postgres",
-  host: "localhost",
+  host: DBHOST,
   port: 5432,
-  username: "postgres",
+  username: DBUSER,
   password: undefined,
-  database: "loaner",
+  database: DB,
   entities: [join(__dirname, "../entities/*.ts")],
   migrations: [join(__dirname, "../migrations/*.ts")],
   synchronize: true,

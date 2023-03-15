@@ -21,12 +21,6 @@ services:
     volumes:
       - /loaner/node_modules
       - ./server:/loaner
-    environment:
-      - PGUSER=value
-      - PGHOST=value
-      - PGDATABASE=value
-      - PGPASSWORD=value
-      - PGPORT=5432
     depends_on:
       - pg
     restart: unless-stopped

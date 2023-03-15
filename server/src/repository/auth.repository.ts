@@ -5,7 +5,7 @@ import { EntityRepository } from "typeorm";
 
 @EntityRepository(Customer)
 export default class AuthRepo {
-  public async signUp(customer: Customer) {
+  public async signUp(customer: CustomerType) {
     //if customer exists
     try {
       const cus = await Customer.findOne({
@@ -14,11 +14,14 @@ export default class AuthRepo {
       if (cus) {
         throw `User already exists for given idCard`;
       }
-
+      customer.dob = new Date()
       const createCus = Customer.create({ ...customer });
       await createCus.save();
       return createCus;
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
   }
   public async login(customer: CustomerAccess) {
     //if customer exists
@@ -37,8 +40,10 @@ export default class AuthRepo {
         throw `Invalid password for user `;
       }
 
-      //create cookie and token
-    } catch (err) {}
+      return customer;
+    } catch (err) {
+      return null;
+    }
   }
   public async logout(customer: CustomerAccess) {
     try {
