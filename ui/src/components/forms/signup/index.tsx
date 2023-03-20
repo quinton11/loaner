@@ -1,18 +1,52 @@
 import { Bar } from "../bar"
+import { useForm } from "react-hook-form";
+
 import "./index.css"
 
 export const SignUpForm = () => {
-    return <form className="box--main">
+    const { register, handleSubmit, formState: { errors }, watch } = useForm()
+
+    return <form className="box--main" onSubmit={handleSubmit(async (data) => {
+        console.log(data)
+        console.log(errors)
+    })}>
         <div className="names">
-            <Bar name={"First Name"} isname={true} />
-            <Bar name={"Last Name"} isname={true} />
+            <Bar name={"First Name"} isname={true} register={register} errors={errors} validParams={{
+                required: { value: true, message: "Required" },
+                pattern: { value: /^[a-zA-Z_ ]*$/i, message: "No numbers allowed" },
+            }} />
+            <Bar name={"Last Name"} isname={true} register={register} errors={errors} validParams={{
+                required: { value: true, message: "Required" },
+                pattern: { value: /^[a-zA-Z_ ]*$/i, message: "No numbers allowed" },
+            }} />
         </div>
-        <Bar name={"Email"} />
-        <Bar name={"Password"} />
-        <Bar name={"Password Again"} />
-        <Bar name={"idCard"} />
-        <Bar name={"Is Employed"} />
-        <Bar name={"Date of Birth"} />
+        <Bar name={"Email"} register={register} errors={errors}
+            validParams={{
+                required: { value: true, message: "Required" },
+                pattern: {
+                    value:
+                        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                    message: "Not a valid email"
+                }
+            }} />
+        <Bar name={"Password"} register={register} errors={errors} validParams={{
+            minLength: { value: 5, message: "Should be minimum 5 characters" },
+            required: { value: true, message: "Required" }
+        }} />
+        <Bar name={"Password Again"} register={register} errors={errors} validParams={{
+            required: { value: true, message: "Required" },
+            validate: (val: string) => {
+                if (watch('Password') !== val) {
+                    return "passwords do not match"
+                }
+            }
+        }} />
+        <Bar name={"idCard"} register={register} errors={errors}
+            validParams={{ required: { value: true, message: "Required" } }} />
+        <Bar name={"isEmployed"} register={register} errors={errors}
+            validParams={{ required: { value: true, message: "Required" } }} />
+        <Bar name={"Date of Birth"} register={register} errors={errors}
+            validParams={{ required: { value: true, message: "Required" } }} />
         <button className="form--button">Submit</button>
     </form>
 }
