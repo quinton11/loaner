@@ -1,5 +1,6 @@
 import { Bar } from "../bar"
 import { useForm } from "react-hook-form";
+import { convert, signUp } from "./util";
 
 import "./index.css"
 
@@ -8,7 +9,8 @@ export const SignUpForm = () => {
 
     return <form className="box--main" onSubmit={handleSubmit(async (data) => {
         console.log(data)
-        console.log(errors)
+        await signUp("signup", convert(data))
+        //make request to server
     })}>
         <div className="names">
             <Bar name={"First Name"} isname={true} register={register} errors={errors} validParams={{
@@ -43,6 +45,18 @@ export const SignUpForm = () => {
         }} />
         <Bar name={"idCard"} register={register} errors={errors}
             validParams={{ required: { value: true, message: "Required" } }} />
+        <Bar name={"telephone"} register={register} errors={errors}
+            validParams={{
+                required: { value: true, message: "Required" },
+                maxLength: {
+                    value: 10,
+                    message: "Phone number should be 10 digits",
+                },
+                minLength: {
+                    value: 10,
+                    message: "Phone number should be 10 digits",
+                },
+            }} />
         <Bar name={"isEmployed"} register={register} errors={errors}
             validParams={{ required: { value: true, message: "Required" } }} />
         <Bar name={"Date of Birth"} register={register} errors={errors}

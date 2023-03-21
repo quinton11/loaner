@@ -5,9 +5,10 @@ export interface CustomerType {
   password: string;
   telephone: number;
   email: string;
-  dob: Date;
+  dob: string;
   employed: boolean;
 }
+
 
 export interface CustomerAccess {
   idCard: string;

@@ -1,8 +1,12 @@
+/* import VisibilityIcon from '@mui/icons-material/Visibility';
+import IconButton from "@material-ui/core/IconButton"; */
+
+
 import "./index.css"
 
 /* Create form container with id form--case which holds span of error message for validation */
 export const Bar = ({ name, isname, register, errors, validParams }: any) => {
-    var cl = "b";
+    var cl = "";
     var type = "text"
     if (isname && name === "Last Name") {
         cl = "form--case-last"
@@ -24,9 +28,9 @@ export const Bar = ({ name, isname, register, errors, validParams }: any) => {
                 <option value="employed">Employed</option>
                 <option value="jobless">Jobless</option>
             </select> :
-            <input className={isname ? "form-name" : "form"} placeholder={name} onFocus={() => {
-                /*  */
-            }} {...register(name, validParams)} type={type} />}
+            <input className={isname ? "form-name" : "form"} placeholder={name}
+                {...register(name, validParams)} type={type}>
+            </input>}
 
     </div>
 }

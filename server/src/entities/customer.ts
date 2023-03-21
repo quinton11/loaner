@@ -39,9 +39,6 @@ export class Customer extends BaseEntity implements CustomerType {
   dob: Date;
 
   @Column()
-  married: boolean;
-
-  @Column()
   employed: boolean;
 
   @OneToMany(() => Loan, (loan) => loan.customer)

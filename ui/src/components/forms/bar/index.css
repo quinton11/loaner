@@ -57,3 +57,11 @@ input:focus {
   border-radius: 5px;
   border: none;
 }
+
+#icon--button {
+  padding:0;
+}
+#icon--b {
+  width: 1em;
+  height: 1em;
+}

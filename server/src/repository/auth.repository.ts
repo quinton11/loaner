@@ -14,7 +14,9 @@ export default class AuthRepo {
       if (cus) {
         throw `User already exists for given idCard`;
       }
-      customer.dob = new Date()
+      //password hashing
+
+      //customer.dob = new Date();
       const createCus = Customer.create({ ...customer });
       await createCus.save();
       return createCus;

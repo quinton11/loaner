@@ -1,11 +1,13 @@
 /* Set up server */
 
 import express from "express";
-import cors from "cors";
+import cookieParser from "cookie-parser"
 import { connect } from "database/connect";
 import { AuthRouter } from "routes/auth.route";
 import { CustomerRouter } from "routes/user.route";
 import { LoanRouter } from "routes/loan.route";
+import { SECRET } from "config";
+import { CorsMiddleware } from "middleware/cors.middleware";
 
 export default class Server {
   public port: number;
@@ -26,9 +28,10 @@ export default class Server {
   }
 
   initMiddleware() {
-    this.server.use(cors());
+    this.server.use(CorsMiddleware);
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
+    this.server.use(cookieParser(SECRET))
     this.server.use(AuthRouter);
     this.server.use(CustomerRouter);
     this.server.use(LoanRouter);

@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 /* Create and validate tokens */
 export const createToken = (user: CustomerAccess) => {
   const secret = SECRET as string;
+
   const payload = { idCard: user.idCard, email: user.email };
   const validTime = 60 * 60;
 
