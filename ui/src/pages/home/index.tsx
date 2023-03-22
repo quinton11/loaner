@@ -3,11 +3,15 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { fetchUser } from "./util"
 import { LoanBox } from "../../components/loans/loanBox"
+import { SessionDialogue } from "../../components/dialogues/session/session"
+/* import { LoanDialogue } from "../../components/dialogues/loan/loanDialogue" */
 
 export const HomePage = () => {
     //make request for user information
     //to populate fields
     const [user, setUser] = useState(null)
+    const [sessionEnd, setSessionEnd] = useState(false)
+    /* const [newloan, setNewLoan] = useState(false) */
     const navigate = useNavigate()
     useEffect(() => {
         if (!user) {
@@ -15,6 +19,8 @@ export const HomePage = () => {
                 console.log(res)
                 if (res) {
                     setUser(res.data)
+                } else {
+                    setSessionEnd(true)
                 }
             })
         }
@@ -26,6 +32,7 @@ export const HomePage = () => {
                 <button className="loan--button" onClick={() => {
                     console.log("Loan screen")
                     navigate("/user/loan/request")
+                    /* setNewLoan(true) */
                 }}>New Loan</button>
                 <div className="welcome">
                     <div className="welcome--text">Welcome,</div>
@@ -76,6 +83,8 @@ export const HomePage = () => {
                 </div>
                 <LoanBox loans={user ? user["loans"] : null} />
             </div>
+            <SessionDialogue open={sessionEnd} />
+            {/* <LoanDialogue open={newloan} set={setNewLoan} /> */}
         </div>
     </div>
 }

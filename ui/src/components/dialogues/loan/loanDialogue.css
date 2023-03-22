@@ -1,0 +1,30 @@
+#dialogue--box {
+  background-color: #1f3458;
+}
+
+#loan-dialogue-title {
+  font-family: "Montserrat";
+  font-weight: bold;
+}
+#loan-dialogue-text {
+  font-family: "Montserrat";
+  font-weight: normal;
+}
+
+#loan--button {
+  width: 90px;
+  height: 30px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  color: #00cdbe;
+}
+
+#loan--button:hover {
+  background-color: white;
+  color: #00cdbe;
+  border: 2px solid #00cdbe;
+}
