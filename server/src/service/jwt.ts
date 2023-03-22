@@ -16,8 +16,11 @@ export const createToken = (user: CustomerAccess) => {
 
 export const validateToken = (token: string) => {
   const secret = SECRET as string;
-  jwt.verify(token, secret, (err, user) => {
-    console.log(err?.message);
-    console.log(user);
-  });
+  try {
+    const user = jwt.verify(token, secret);
+    return user;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 };

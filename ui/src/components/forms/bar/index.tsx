@@ -14,7 +14,7 @@ export const Bar = ({ name, isname, register, errors, validParams }: any) => {
         cl = "form--case"
     }
 
-    if (name === "Date of Birth") {
+    if ((name === "Date of Birth") || (name === "Due Date")) {
         type = "date"
     }
     else if ((name === "Password") || (name === "Password Again")) {

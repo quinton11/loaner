@@ -1,12 +1,14 @@
 export interface LoanType {
-  amount: number;
+  principal: number;
   rate: number;
+  redeemed: number;
   issueDate: Date;
   payDate: Date;
 }
 
 export interface CreateLoan {
   idCard: string;
-  amount: number;
+  principal: number;
   rate: number;
+  payDate: string;
 }

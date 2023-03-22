@@ -50,10 +50,8 @@ router.post("/signin", async (req: express.Request, res: express.Response) => {
   const options = {
     maxAge: 1000 * 60 * 60,
     httpOnly: true,
-    signed: true,
   };
-  console.log("Setting cookie")
-  res.cookie("Authorization", token, options);
+  res.cookie("auth", token, options);
   res.status(200).json({ message: "Done" });
   
 });

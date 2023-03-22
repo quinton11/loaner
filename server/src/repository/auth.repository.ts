@@ -18,6 +18,7 @@ export default class AuthRepo {
 
       //customer.dob = new Date();
       const createCus = Customer.create({ ...customer });
+      createCus.loans = [];
       await createCus.save();
       return createCus;
     } catch (err) {

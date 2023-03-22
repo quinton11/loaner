@@ -15,10 +15,13 @@ export class Loan extends BaseEntity implements LoanType {
   id: number;
 
   @Column()
-  amount: number;
+  principal: number;
 
   @Column()
   rate: number;
+
+  @Column()
+  redeemed: number;
 
   @ManyToOne(() => Customer, (customer) => customer.loans)
   @JoinColumn({ name: "customer_id" })

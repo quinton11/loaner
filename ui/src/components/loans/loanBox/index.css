@@ -1,0 +1,16 @@
+.main--loans {
+  display: flex;
+  width: 60%;
+  height: 90%;
+  background-color: rgba(127, 127, 127, 0.1);
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.none {
+  align-self: center;
+  font-weight: bold;
+  color: white;
+}

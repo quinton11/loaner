@@ -31,7 +31,7 @@ export default class Server {
     this.server.use(CorsMiddleware);
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
-    this.server.use(cookieParser(SECRET))
+    this.server.use(cookieParser())
     this.server.use(AuthRouter);
     this.server.use(CustomerRouter);
     this.server.use(LoanRouter);

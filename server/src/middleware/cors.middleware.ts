@@ -19,8 +19,9 @@ export const CorsMiddleware = (
     resp.setHeader("Access-Control-Allow-Origin", origin);
   }
 
-  resp.header("Access-Control-Allow-Methods", "GET, OPTIONS");
+  resp.header("Access-Control-Allow-Methods", "GET, OPTIONS,POST");
   resp.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   resp.header("Access-Control-Allow-Credentials", "true");
+  
   return next();
 };

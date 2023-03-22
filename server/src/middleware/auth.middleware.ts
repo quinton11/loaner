@@ -7,14 +7,31 @@ export const authMiddleware = (
   next: express.NextFunction
 ) => {
   try {
-    const cookie = req.cookies["Authorization"];
+    let cookies: any = {};
+    const cookieslist = req.headers.cookie?.split(";");
+    //
+    cookieslist?.forEach((cookie) => {
+      const spl = cookie.split("=");
+      const key = spl[0];
+
+      cookies[key] = spl[1];
+    });
+    const cookie = cookies["auth"];
+    console.log("Before Cookie null check");
+
     if (!cookie) {
-      //res.status(400).json({ message: "Invalid Auth" });
       throw "Invalid Auth";
     }
 
+    console.log("After Cookie null check");
+
     const valid = validateToken(cookie);
-    console.log(valid);
+    console.log("After Cookie vallidation");
+
+    if (!valid) {
+      throw "Invalid Auth";
+    }
+    res.locals["customer"] = valid;
     next();
   } catch (err) {
     res.status(400).json({ message: err });
