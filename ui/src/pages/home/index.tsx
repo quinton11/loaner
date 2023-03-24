@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { fetchUser } from "./util"
 import { LoanBox } from "../../components/loans/loanBox"
 import { SessionDialogue } from "../../components/dialogues/session/session"
+import { MetaBox } from "../../components/meta"
 /* import { LoanDialogue } from "../../components/dialogues/loan/loanDialogue" */
 
 export const HomePage = () => {
@@ -44,9 +45,25 @@ export const HomePage = () => {
             <div className="middle--box">
                 <div className="middle--text">Dashboard</div>
                 <div className="middle--info">
-                    <div className="info">Loan Principal Balance</div>
-                    <div className="info">%Amount of loan redeemed</div>
-                    <div className="info">pie chart of amount redeemed as percentage</div>
+                    <div className="info--balance">
+                        <div className="balance--header">Loan Balance:</div>
+                        <div className="balance--amount">
+                            <span id="ghc">GHC</span>
+                            4200
+                        </div>
+                    </div>
+                    <div className="info--balance">
+                        <div className="balance--header">Interest Rate:</div>
+                        <div className="balance--amount" id="ir">
+                            %4.5
+                        </div>
+                    </div>
+                    <div className="info--balance">
+                        <div className="balance--header">%Paid:</div>
+                        <div className="balance--amount">
+                            %0.2
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -58,28 +75,21 @@ export const HomePage = () => {
                         </div>
                         <div className="private--body">
                             <div className="info">
-                                {user ? `${user["firstName"]} ${user["lastName"]}` : ""}
+                                <span className="field">Name </span>
+                                - {user ? `${user["firstName"]} ${user["lastName"]}` : ""}
                             </div>
                             <div className="info">
-                                {user ? user["email"] : ""}
+                                <span className="field">Email </span>
+                                - {user ? user["email"] : ""}
                             </div>
                             <div className="info">
-                                {user ? user["idCard"] : ""}
+                                <span className="field">IdCard </span>
+                                - {user ? user["idCard"] : ""}
                             </div>
 
                         </div>
                     </div>
-                    <div className="main--meta">
-                        <div className="meta--header">
-                            Meta
-                        </div>
-                        <div className="meta--body">
-                            <div className="info">Total loans</div>
-                            <div className="info">Pie chart of %loans redeemed</div>
-                            <div className="info">Total interest increase over time</div>
-                        </div>
-
-                    </div>
+                    <MetaBox />
                 </div>
                 <LoanBox loans={user ? user["loans"] : null} />
             </div>

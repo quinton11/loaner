@@ -1,6 +1,6 @@
 import { EntityRepository } from "typeorm";
 import { Loan } from "entities/loan";
-import { CreateLoan, LoanType } from "interfaces/loan";
+import { CreateLoan, LoanInfo, LoanType } from "interfaces/loan";
 import { Customer } from "entities/customer";
 import { CustomerType } from "interfaces/customer";
 
@@ -23,15 +23,33 @@ export default class LoanRepository {
   public async readLoan(customer: CustomerType) {
     //read loan for a given customer
   }
-  public async readLoans(customer: Customer) {
+  public async readLoans(customer: Customer): Promise<LoanInfo[] | null> {
     //get all loans for a given customer
     try {
-      const loans = await Loan.find({ where: { customer: customer } });
+      const ls = await Loan.find({ where: { customer: customer } });
+      const loans = this.calcInterest(ls);
       return loans;
     } catch (err) {
       console.log(err);
       return null;
     }
+  }
+
+  public calcInterest(loans: Loan[]): LoanInfo[] {
+    var resloans: LoanInfo[] = new Array<LoanInfo>();
+    const now = new Date().getTime();
+    const nowseconds = Math.round(now / 1000);
+
+    for (const loan of loans) {
+
+      const time = nowseconds - Math.round(loan.issueDate.getTime() / 1000);
+      const timeYear = time / (60 * 60 * 24 * 365);
+      const interest = (loan.principal * loan.rate * timeYear) / 100;
+
+      const amount = loan.principal + interest;
+      resloans.push({ ...loan, amount, interest });
+    }
+    return resloans;
   }
   public async updateLoan(customer: CustomerType, loan: LoanType) {
     //update loan for a given customer

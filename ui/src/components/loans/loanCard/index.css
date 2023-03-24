@@ -1,0 +1,105 @@
+.loan--card {
+  display: flex;
+  width: 95%;
+  height: 120px;
+  background-color: #1f3458;
+  border-radius: 8px;
+  margin-top: 20px;
+  flex-direction: row;
+}
+
+.card--col {
+  width: 160px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+  color: #00cdbe;
+}
+
+.card--sub {
+  height: 50px;
+  width: 135px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: #00cdbe;
+}
+
+.card--sub-header {
+  font-size: 8px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.card--sub-amount {
+  display: flex;
+  font-size: 15px;
+  font-weight: bold;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#interest {
+  color: #ff7087;
+}
+
+#card--sub-ghc {
+  font-size: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 3px;
+  padding-right: 2px;
+}
+
+.card--balance {
+  height: 100px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px;
+  color: #00cdbe;
+}
+
+.card--header {
+  font-size: 10px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+#card-ghc {
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+  padding-right: 2px;
+}
+
+#ir {
+  color: white;
+}
+
+.card--amount {
+  display: flex;
+  font-size: 25px;
+  font-weight: bold;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}

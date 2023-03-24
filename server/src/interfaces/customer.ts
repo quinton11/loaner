@@ -1,4 +1,4 @@
-import { Loan } from "entities/loan";
+import { LoanInfo } from "./loan";
 
 export interface CustomerType {
   idCard: string;
@@ -22,5 +22,5 @@ export interface CustomerDetails {
   firstName: string;
   lastName: string;
   email: string;
-  loans: Loan[];
+  loans: LoanInfo[];
 }

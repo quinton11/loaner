@@ -1,0 +1,130 @@
+.main--meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 5px;
+  width: 90%;
+  height: 60%;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.meta--body {
+  width: 100%;
+  height: 90%;
+  /* background-color: brown; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 10px;
+  //padding-left: 10px;
+}
+
+.meta--loans {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px;
+  height: 55px;
+  width: 150px;
+}
+.meta-loans--header {
+  font-size: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  color: rgba(255, 255, 255, 0.7);
+}
+.meta-loans--value {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.meta--si {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  width: 150px;
+  height: 55px;
+  margin-top: 10px;
+}
+.meta--np {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  margin-top: 5px;
+  width: 90%;
+  height: 90px;
+  background-color: #1f3458;
+}
+.meta-np--header {
+  font-size: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  color: rgba(255, 255, 255, 0.7);
+  padding-left: 15px;
+}
+.meta-np--value {
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  height: 80%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.np--amount {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 50%;
+}
+.np--date {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 50%;
+}
+
+.np-amt--title {
+  font-size: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  color: rgba(255, 255, 255, 0.7);
+}
+.np-amt--value {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #00cdbe;
+}
+
+#np-g {
+  font-size: 6px;
+  margin-right: 5px;
+}
+#np-m {
+  font-size: 6px;
+  margin-right: 5px;
+}
+
+.np-date--title {
+  font-size: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  color: rgba(255, 255, 255, 0.7);
+}
+.np-date--value {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #ff7087;
+}

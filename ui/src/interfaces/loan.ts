@@ -4,3 +4,13 @@ export interface CreateLoan {
   rate: number;
   payDate: string;
 }
+
+export interface LoanInfo {
+  principal: number;
+  rate: number;
+  redeemed: number;
+  amount: number;
+  interest: number;
+  issueDate: string;
+  payDate: string;
+}

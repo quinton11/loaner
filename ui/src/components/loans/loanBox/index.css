@@ -1,11 +1,11 @@
 .main--loans {
   display: flex;
-  width: 60%;
+  width: 65%;
   height: 90%;
-  background-color: rgba(127, 127, 127, 0.1);
+  background-color: rgba(127, 127, 127, 0.15);
   border-radius: 8px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -14,3 +14,32 @@
   font-weight: bold;
   color: white;
 }
+
+.loan--area {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px;
+  overflow-y: scroll;
+}
+
+.loan--area::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 5px;
+}
+
+.loan--area::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.loan--area::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background-color: #00cdbe;
+}
+

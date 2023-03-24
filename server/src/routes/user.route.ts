@@ -22,18 +22,19 @@ router.post(
         throw `Customer does not exist`;
       }
 
+      const loans = await loanRepo.readLoans(customer);
+      if (!loans) {
+        throw `Error in retrieving loans`;
+      }
       const details: CustomerDetails = {
         idCard: customer.idCard,
         firstName: customer.firstName,
         lastName: customer.lastName,
         email: customer.email,
-        loans: customer.loans,
+        loans: loans,
       };
-      const loans = await loanRepo.readLoans(customer);
-      if (loans) {
-        console.log("Read loans")
-        details.loans = loans;
-      }
+
+      //calculate simple interest, amount
       console.log(details);
       //fetch user data
       res.status(200).json({ data: details });
