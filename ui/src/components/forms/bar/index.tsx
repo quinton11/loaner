@@ -14,6 +14,10 @@ export const Bar = ({ name, isname, register, errors, validParams }: any) => {
         cl = "form--case"
     }
 
+    if (name === "duration") {
+        type = "number"
+    }
+
     if ((name === "Date of Birth") || (name === "Due Date")) {
         type = "date"
     }

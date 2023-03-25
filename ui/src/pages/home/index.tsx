@@ -5,7 +5,7 @@ import { fetchUser } from "./util"
 import { LoanBox } from "../../components/loans/loanBox"
 import { SessionDialogue } from "../../components/dialogues/session/session"
 import { MetaBox } from "../../components/meta"
-/* import { LoanDialogue } from "../../components/dialogues/loan/loanDialogue" */
+import { MiddleBox } from "../../components/middleBox"
 
 export const HomePage = () => {
     //make request for user information
@@ -42,31 +42,7 @@ export const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <div className="middle--box">
-                <div className="middle--text">Dashboard</div>
-                <div className="middle--info">
-                    <div className="info--balance">
-                        <div className="balance--header">Loan Balance:</div>
-                        <div className="balance--amount">
-                            <span id="ghc">GHC</span>
-                            4200
-                        </div>
-                    </div>
-                    <div className="info--balance">
-                        <div className="balance--header">Interest Rate:</div>
-                        <div className="balance--amount" id="ir">
-                            %4.5
-                        </div>
-                    </div>
-                    <div className="info--balance">
-                        <div className="balance--header">%Paid:</div>
-                        <div className="balance--amount">
-                            %0.2
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <MiddleBox />
             <div className="main--box">
                 <div className="main--details">
                     <div className="main--private">

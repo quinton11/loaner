@@ -23,6 +23,9 @@ export class Loan extends BaseEntity implements LoanType {
   @Column()
   redeemed: number;
 
+  @Column()
+  duration: number;
+
   @ManyToOne(() => Customer, (customer) => customer.loans)
   @JoinColumn({ name: "customer_id" })
   customer: Customer;

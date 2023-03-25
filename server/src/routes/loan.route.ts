@@ -29,6 +29,7 @@ router.post(
       const loan = req.body as CreateLoan;
       loan.rate = 4;
       loan.idCard = cus.idCard;
+      loan.duration = parseInt(req.body["duration"]);
       const customer = await userRepo.cusRead(cus);
       if (!customer) {
         throw `Invalid user`;

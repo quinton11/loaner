@@ -45,6 +45,7 @@ export default class AuthRepo {
 
       return customer;
     } catch (err) {
+      console.log(err)
       return null;
     }
   }

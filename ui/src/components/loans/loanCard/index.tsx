@@ -1,10 +1,14 @@
 import { LoanInfo } from "../../../interfaces/loan"
+/* import { LoanAmortizationBox } from "../../dialogues/amortization";
+import { useState } from "react" */
+
 import "./index.css"
 
-export const LoanCard = ({ loan }: any) => {
+export const LoanCard = ({ loan, onClick }: any) => {
     const l = loan as LoanInfo
+    /* const [open, setOpen] = useState(false) */
     console.log(l);
-    return <div className="loan--card">
+    return <div className="loan--card" onClick={onClick}>
         <div className="card--balance">
             <div className="card--header">Amt:</div>
             <div className="card--amount">
@@ -51,6 +55,7 @@ export const LoanCard = ({ loan }: any) => {
                 </div>
             </div>
         </div>
+       {/*  <LoanAmortizationBox open={open} loan={loan} set={setOpen} /> */}
 
     </div>
 }

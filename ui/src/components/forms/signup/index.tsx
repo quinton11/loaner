@@ -1,14 +1,22 @@
 import { Bar } from "../bar"
 import { useForm } from "react-hook-form";
 import { convert, signUp } from "./util";
+import { useState } from "react"
+import Button from '@mui/joy/Button';
+import CircularProgress from '@mui/joy/CircularProgress';
 
 import "./index.css"
 
 export const SignUpForm = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm()
+    const [submit, setSubmit] = useState(false)
+
 
     return <form className="box--main" onSubmit={handleSubmit(async (data) => {
         console.log(data)
+        /* validate birth date to be over 18yrs */
+        setSubmit(true)
+
         await signUp("signup", convert(data))
         //make request to server
     })}>
@@ -61,6 +69,9 @@ export const SignUpForm = () => {
             validParams={{ required: { value: true, message: "Required" } }} />
         <Bar name={"Date of Birth"} register={register} errors={errors}
             validParams={{ required: { value: true, message: "Required" } }} />
-        <button className="form--button">Submit</button>
+        {!submit ? <button className="form--button">Submit</button> :
+            <Button id="butt-col" startDecorator={<CircularProgress variant="solid" thickness={2} />}>
+                Submitting…
+            </Button>}
     </form>
 }

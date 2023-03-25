@@ -16,7 +16,7 @@ export const convert = (data: any): CreateLoan => {
   const loan: CreateLoan = {
     idCard: "",
     principal: data["principal"],
-    payDate: data["Due Date"],
+    duration: data["duration"],
     rate: 0,
   };
 

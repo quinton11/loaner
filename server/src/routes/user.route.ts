@@ -13,7 +13,7 @@ router.post(
   authMiddleware,
   async (req: express.Request, res: express.Response) => {
     console.log("hit user");
-    console.log(res.locals);
+    //console.log(res.locals);
     try {
       const cus: CustomerType = res.locals["customer"];
       //fetch user data from database
@@ -35,7 +35,7 @@ router.post(
       };
 
       //calculate simple interest, amount
-      console.log(details);
+      //console.log(details);
       //fetch user data
       res.status(200).json({ data: details });
     } catch (err) {

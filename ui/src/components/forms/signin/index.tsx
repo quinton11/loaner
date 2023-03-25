@@ -1,17 +1,25 @@
 import { Bar } from "../bar"
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react"
+import Button from '@mui/joy/Button';
+import CircularProgress from '@mui/joy/CircularProgress';
 
 import "./index.css"
 import { convert, signIn } from "./util";
 
 export const SignInForm = () => {
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const [submit, setSubmit] = useState(false)
+
     const navigate = useNavigate()
     return <form className="box--main" onSubmit={handleSubmit(async (data) => {
         console.log(data)
+        setSubmit(true)
+
         const done = await signIn("signin", convert(data))
         //on success, navigate to dashboard page
+        setSubmit(false)
         if (done) {
             //navigate to dashboard
             console.log("Navigating ro dashboard")
@@ -30,6 +38,9 @@ export const SignInForm = () => {
                 }
             }} />
         <Bar name={"Password"} register={register} errors={errors} />
-        <button className="form--button">Submit</button>
+        {!submit ? <button className="form--button">Submit</button> :
+            <Button id="butt-col" startDecorator={<CircularProgress variant="solid" thickness={2} />}>
+                Submitting…
+            </Button>}
     </form>
 }

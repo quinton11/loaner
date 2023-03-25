@@ -2,7 +2,7 @@ export interface CreateLoan {
   idCard: string;
   principal: number;
   rate: number;
-  payDate: string;
+  duration: number;
 }
 
 export interface LoanInfo {
@@ -13,4 +13,12 @@ export interface LoanInfo {
   interest: number;
   issueDate: string;
   payDate: string;
+  duration: number;
+  id: number;
+}
+
+export interface LoanPieItem {
+  value: number;
+  category: string;
+  summary: string;
 }
