@@ -97,15 +97,23 @@
 }
 
 .details--chart {
-  background-color: orange;
   width: 95%;
   height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pie--chart {
+  font-family: "Montserrat";
 }
 
 .amort--visual {
-  background-color: yellow;
   width: 60%;
   height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #due--date {

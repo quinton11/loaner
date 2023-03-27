@@ -24,6 +24,8 @@
   background-color: white;
   color: #00cdbe;
   border: 2px solid #00cdbe;
+  cursor: pointer;
+
 }
 
 #butt-col{

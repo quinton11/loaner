@@ -1,6 +1,10 @@
+import { LoanInfo } from "../../interfaces/loan"
 import "./index.css"
 
-export const MetaBox = () => {
+export const MetaBox = ({ loans }: any) => {
+    const l: LoanInfo[] = loans as LoanInfo[]
+    console.log(l)
+    const exists: boolean = (loans);
     return <div className="main--meta">
         <div className="meta--header">
             Meta
@@ -8,7 +12,7 @@ export const MetaBox = () => {
         <div className="meta--body">
             <div className="meta--loans">
                 <div className="meta-loans--header">Total Loans</div>
-                <div className="meta-loans--value">5</div>
+                <div className="meta-loans--value">{exists ? l.length : 0}</div>
             </div>
             <div className="meta--np">
                 <div className="meta-np--header">Next Payment</div>
@@ -31,9 +35,9 @@ export const MetaBox = () => {
             </div>
             <div className="meta--si">
                 <div className="meta-loans--header">Monthly Rate</div>
-                <div className="meta-loans--value">0.02%</div>
+                <div className="meta-loans--value">%{exists ? (l[0].rate / 12).toFixed(2) : 0}</div>
             </div>
-            
+
         </div>
 
     </div>

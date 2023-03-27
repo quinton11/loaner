@@ -35,7 +35,7 @@ router.post(
       };
 
       //calculate simple interest, amount
-      //console.log(details);
+      console.log(details);
       //fetch user data
       res.status(200).json({ data: details });
     } catch (err) {

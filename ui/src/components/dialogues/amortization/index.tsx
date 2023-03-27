@@ -4,27 +4,19 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import {useRef,MutableRefObject} from "react"
+import { Chart as ChartJS, ArcElement, Tooltip, CategoryScale, LinearScale, PointElement, LineElement/* , Legend */ } from "chart.js";
 
+import { Pie, Line } from 'react-chartjs-2'
 import "./index.css"
-import { LoanInfo, LoanPieItem } from "../../../interfaces/loan";
-import { getYear, getMonth,getPieItems } from './util';
+import { LoanInfo } from "../../../interfaces/loan";
+import { getYear, getMonth, getPieData, calcAmortPlan,options,optionsPie } from './util';
 
-import { IgrItemLegendModule, IgrPieChartModule } from 'igniteui-react-charts';
-import { IgrItemLegend, IgrPieChart } from 'igniteui-react-charts';
-import { ResponsivePie } from '@nivo/pie'
-
-const mods: any[] = [
-    IgrItemLegendModule,
-    IgrPieChartModule
-];
-mods.forEach((m) => m.register());
+ChartJS.register(ArcElement, Tooltip, CategoryScale, LinearScale, PointElement, LineElement/* , Legend */);
 
 export const LoanAmortizationBox = ({ loan, open, set }: any) => {
     const l = loan as LoanInfo
-    const pieLegend = useRef() as MutableRefObject<IgrItemLegend>
-    const pieChart = useRef() as MutableRefObject<IgrPieChart>
-    const pieitems:LoanPieItem[] = getPieItems(l)
+    
+
     return <Dialog open={open} onClose={() => { }} >
         <DialogTitle id="loan-dialogue-title">Loan - #{l.id}</DialogTitle>
         <DialogContent>
@@ -34,12 +26,12 @@ export const LoanAmortizationBox = ({ loan, open, set }: any) => {
             <div className="amort-content">
                 <div className="amort--details">
                     <div className="details">
-                        <div className="amort-amount">due:
+                        <div className="amort-amount">amt:
                             <div className="rate--value">
                                 <span className='ghc'>GHC </span>
-                                {l.amount}</div>
-                            </div>
-                            
+                                {l.principal}</div>
+                        </div>
+
                         <div className="amort-rate">at:
                             <div className="rate--value">
                                 %{(l.rate / 12).toFixed(2)}
@@ -54,20 +46,11 @@ export const LoanAmortizationBox = ({ loan, open, set }: any) => {
                         </div>
                     </div>
                     <div className="details--chart">
-                        <IgrPieChart
-                            dataSource={pieitems}
-                            valueMemberPath="value"
-                            labelMemberPath="category"
-                            labelsPosition="BestFit"
-                            radiusFactor="0.7"
-                            legend={pieLegend}
-                            ref={pieChart}>
-                        </IgrPieChart>
-
+                        <Pie data={getPieData(loan)} id="pie--chart" options={optionsPie} />
                     </div>
                 </div>
                 <div className="amort--visual">
-                    Graph of payment and next payment
+                    <Line data={calcAmortPlan(loan)} options={options}></Line>
                 </div>
             </div>
         </DialogContent>
@@ -79,83 +62,3 @@ export const LoanAmortizationBox = ({ loan, open, set }: any) => {
     </Dialog>
 }
 
-
-export const RespPie = (l:LoanInfo)=>{
-    return <ResponsivePie
-        data={getPieItems(l)}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-        innerRadius={0.5}
-        padAngle={0.7}
-        cornerRadius={3}
-        activeOuterRadiusOffset={8}
-        borderWidth={1}
-        borderColor={{
-            from: 'color',
-            modifiers: [
-                [
-                    'darker',
-                    0.2
-                ]
-            ]
-        }}
-        arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor="#333333"
-        arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{ from: 'color' }}
-        arcLabelsSkipAngle={10}
-        arcLabelsTextColor={{
-            from: 'color',
-            modifiers: [
-                [
-                    'darker',
-                    2
-                ]
-            ]
-        }}
-        defs={[
-            {
-                id: 'dots',
-                type: 'patternDots',
-                background: 'inherit',
-                color: 'rgba(255, 255, 255, 0.3)',
-                size: 4,
-                padding: 1,
-                stagger: true
-            },
-            {
-                id: 'lines',
-                type: 'patternLines',
-                background: 'inherit',
-                color: 'rgba(255, 255, 255, 0.3)',
-                rotation: -45,
-                lineWidth: 6,
-                spacing: 10
-            }
-        ]}
-        legends={[
-            {
-                anchor: 'bottom',
-                direction: 'row',
-                justify: false,
-                translateX: 0,
-                translateY: 56,
-                itemsSpacing: 0,
-                itemWidth: 100,
-                itemHeight: 18,
-                itemTextColor: '#999',
-                itemDirection: 'left-to-right',
-                itemOpacity: 1,
-                symbolSize: 18,
-                symbolShape: 'circle',
-                effects: [
-                    {
-                        on: 'hover',
-                        style: {
-                            itemTextColor: '#000'
-                        }
-                    }
-                ]
-            }
-        ]}
-    />
-}

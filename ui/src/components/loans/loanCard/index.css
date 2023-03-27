@@ -8,6 +8,25 @@
   flex-direction: row;
 }
 
+@keyframes loanCard {
+  0% {
+    border: none;
+  }
+  100% {
+    border: 2px solid #00cdbe;
+  }
+}
+
+.loan--card:hover {
+  /* border: 2px solid #00cdbe; */
+  animation-name: loanCard;
+  animation-duration: .5s;
+  /* animation-delay: 0.2s; */
+  cursor: pointer;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
 .card--col {
   width: 160px;
   height: 100px;

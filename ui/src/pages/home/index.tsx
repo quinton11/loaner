@@ -19,6 +19,7 @@ export const HomePage = () => {
             fetchUser("user").then((res) => {
                 console.log(res)
                 if (res) {
+                    console.log(res)
                     setUser(res.data)
                 } else {
                     setSessionEnd(true)
@@ -42,7 +43,7 @@ export const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <MiddleBox />
+            <MiddleBox loans={user ? user["loans"] : null} />
             <div className="main--box">
                 <div className="main--details">
                     <div className="main--private">
@@ -65,7 +66,7 @@ export const HomePage = () => {
 
                         </div>
                     </div>
-                    <MetaBox />
+                    <MetaBox loans={user ? user["loans"] : null} />
                 </div>
                 <LoanBox loans={user ? user["loans"] : null} />
             </div>
