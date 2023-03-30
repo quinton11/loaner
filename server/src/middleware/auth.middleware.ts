@@ -1,5 +1,5 @@
 import express from "express";
-import { validateToken } from "service/jwt";
+import { validateToken } from "../service/jwt";
 
 export const authMiddleware = (
   req: express.Request,

@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { Customer } from "./customer";
 
-@Entity()
+@Entity("loan")
 export class Loan extends BaseEntity implements LoanType {
   @PrimaryGeneratedColumn()
   id: number;

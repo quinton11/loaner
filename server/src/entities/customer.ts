@@ -11,7 +11,7 @@ import {
 import { CustomerType } from "interfaces/customer";
 import { Loan } from "./loan";
 
-@Entity()
+@Entity("customer")
 export class Customer extends BaseEntity implements CustomerType {
   @PrimaryGeneratedColumn()
   id: number;

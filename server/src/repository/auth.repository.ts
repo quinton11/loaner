@@ -1,6 +1,6 @@
 /* Sign up,login and logout functionalities */
-import { Customer } from "entities/customer";
-import { CustomerAccess, CustomerType } from "interfaces/customer";
+import { Customer } from "../entities/customer";
+import { CustomerAccess, CustomerType } from "../interfaces/customer";
 import { EntityRepository } from "typeorm";
 
 @EntityRepository(Customer)
@@ -28,6 +28,7 @@ export default class AuthRepo {
   }
   public async login(customer: CustomerAccess) {
     //if customer exists
+    console.log(customer.idCard)
     try {
       const cus = await Customer.findOne({
         where: { idCard: customer.idCard },

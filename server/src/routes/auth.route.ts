@@ -1,9 +1,8 @@
-import { Customer } from "entities/customer";
 import express from "express";
-import { CustomerAccess, CustomerType } from "interfaces/customer";
-import { authMiddleware } from "middleware/auth.middleware";
-import AuthRepo from "repository/auth.repository";
-import { createToken } from "service/jwt";
+import { CustomerAccess, CustomerType } from "../interfaces/customer";
+import { authMiddleware } from "../middleware/auth.middleware";
+import AuthRepo from "../repository/auth.repository";
+import { createToken } from "../service/jwt";
 
 const router = express.Router();
 const auth = new AuthRepo();
@@ -40,7 +39,7 @@ router.post("/signin", async (req: express.Request, res: express.Response) => {
   console.log("After auth login call");
 
   if (!result) {
-    res.status(403).json({ message: "Invalid credentials" });
+    res.status(404).json({ message: "Invalid credentials" });
     return;
   }
   console.log("Successful auth login");

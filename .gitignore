@@ -2,3 +2,4 @@ server/.env.dev
 server/.env.prod
 server/node_modules
 ui/node_modules
+server/dist

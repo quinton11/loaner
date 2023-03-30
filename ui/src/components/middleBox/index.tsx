@@ -5,7 +5,7 @@ import { totalAmount, totalPaid } from '../../utils/util';
 
 
 export const MiddleBox = ({ loans }: any) => {
-    const exists: boolean = (loans);
+    const exists: boolean = (loans && loans?.length>0);
 
     return <div className="middle--box">
         <div className="middle--text">Dashboard</div>

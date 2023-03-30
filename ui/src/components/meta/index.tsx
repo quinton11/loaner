@@ -4,7 +4,7 @@ import "./index.css"
 export const MetaBox = ({ loans }: any) => {
     const l: LoanInfo[] = loans as LoanInfo[]
     console.log(l)
-    const exists: boolean = (loans);
+    const exists: boolean = (loans && l.length>0);
     return <div className="main--meta">
         <div className="meta--header">
             Meta

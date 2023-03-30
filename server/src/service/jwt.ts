@@ -1,5 +1,5 @@
-import { SECRET } from "config";
-import { CustomerAccess } from "interfaces/customer";
+import { SECRET } from "../config";
+import { CustomerAccess } from "../interfaces/customer";
 import jwt from "jsonwebtoken";
 
 /* Create and validate tokens */

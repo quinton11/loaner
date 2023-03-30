@@ -1,6 +1,6 @@
-import { Customer } from "entities/customer";
+import { Customer } from "../entities/customer";
 import { EntityRepository } from "typeorm";
-import { CustomerType } from "interfaces/customer";
+import { CustomerType } from "../interfaces/customer";
 
 //CRUD operations
 

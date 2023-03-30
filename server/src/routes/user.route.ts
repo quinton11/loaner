@@ -1,8 +1,8 @@
 import express from "express";
-import { CustomerDetails, CustomerType } from "interfaces/customer";
-import { authMiddleware } from "middleware/auth.middleware";
-import CustomerRepository from "repository/customer.repository";
-import LoanRepository from "repository/loan.repository";
+import { CustomerDetails, CustomerType } from "../interfaces/customer";
+import { authMiddleware } from "../middleware/auth.middleware";
+import CustomerRepository from "../repository/customer.repository";
+import LoanRepository from "../repository/loan.repository";
 
 const router = express.Router();
 const userRepo = new CustomerRepository();

@@ -1,8 +1,8 @@
 import { EntityRepository } from "typeorm";
-import { Loan } from "entities/loan";
-import { CreateLoan, LoanInfo, LoanType } from "interfaces/loan";
-import { Customer } from "entities/customer";
-import { CustomerType } from "interfaces/customer";
+import { Loan } from "../entities/loan";
+import { CreateLoan, LoanInfo, LoanType } from "../interfaces/loan";
+import { Customer } from "../entities/customer";
+import { CustomerType } from "../interfaces/customer";
 
 @EntityRepository(Loan)
 export default class LoanRepository {
