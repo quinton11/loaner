@@ -4,20 +4,34 @@ import { convert, signUp } from "./util";
 import { useState } from "react"
 import Button from '@mui/joy/Button';
 import CircularProgress from '@mui/joy/CircularProgress';
+//import { useNavigate } from "react-router-dom";
 
 import "./index.css"
+import { SignUpDialogue } from "../../dialogues/signup";
 
 export const SignUpForm = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm()
     const [submit, setSubmit] = useState(false)
-
+    const [open, setOpen] = useState(false)
+    const [success, setSuccess] = useState(false)
+    //const navigate = useNavigate()
 
     return <form className="box--main" onSubmit={handleSubmit(async (data) => {
         console.log(data)
-        /* validate birth date to be over 18yrs */
         setSubmit(true)
 
-        await signUp("signup", convert(data))
+        const done = await signUp("signup", convert(data))
+        setOpen(true)
+        if (done) {
+            //dialogue box
+            setSuccess(true)
+            //navigate("/")
+        } else {
+            setSuccess(false)
+
+        }
+        setSubmit(false)
+
         //make request to server
     })}>
         <div className="names">
@@ -70,8 +84,9 @@ export const SignUpForm = () => {
         <Bar name={"Date of Birth"} register={register} errors={errors}
             validParams={{ required: { value: true, message: "Required" } }} />
         {!submit ? <button className="form--button">Submit</button> :
-            <Button id="butt-col" startDecorator={<CircularProgress variant="solid" thickness={2} />}>
+            <Button id="butt-col" startDecorator={<CircularProgress id="signUp--circ" variant="solid" thickness={2} />}>
                 Submitting…
             </Button>}
+        <SignUpDialogue open={open} setOpen={setOpen} success={success} />
     </form>
 }

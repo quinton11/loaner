@@ -5,5 +5,4 @@ export const toggleAuthMode = (
 ) => {
   setAuthMode(mode);
   setMain(false);
-  console.log(`Triggered authmode ${mode}`);
 };

@@ -23,13 +23,13 @@ router.post(
   authMiddleware,
   async (req: express.Request, res: express.Response) => {
     try {
-      console.log(req.body);
       const cus: CustomerType = res.locals["customer"];
 
       const loan = req.body as CreateLoan;
       loan.rate = 4;
       loan.idCard = cus.idCard;
       loan.duration = parseInt(req.body["duration"]);
+
       const customer = await userRepo.cusRead(cus);
       if (!customer) {
         throw `Invalid user`;
@@ -41,7 +41,6 @@ router.post(
       }
       res.status(200).json({ message: "Done" });
     } catch (err) {
-      console.log(err);
       res.status(400).json({ message: err });
     }
   }

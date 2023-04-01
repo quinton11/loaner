@@ -36,8 +36,16 @@
   border: 2px solid #00cdbe;
 }
 
-#butt-col{
-  background-color:white;
+#butt-col {
+  background-color: white;
   color: #00cdbe;
   border: 2px solid #00cdbe;
+}
+
+#signUp--sirc {
+  --CircularProgress-progressColor: #00cdbe;
+  color: #00cdbe;
+  font-weight: bold;
+  font-family: "Montserrat";
+  font-size: 10px;
 }

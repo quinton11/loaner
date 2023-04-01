@@ -1,11 +1,18 @@
 import axios from "axios";
 import { CustomerType } from "../../../interfaces/customer";
 
-export const signUp = async (path: string, data: any) => {
-  const url = `http://localhost:5000/${path}`;
+export const signUp = async (path: string, data: any): Promise<boolean> => {
+  try {
+    const url = `http://localhost:5000/${path}`;
 
-  const res = await axios.post(url, data, { withCredentials: true });
-  console.log(res.status);
+    const res = await axios.post(url, data, { withCredentials: true });
+    if (res.status === 200) {
+      return true;
+    }
+    return false;
+  } catch (err) {
+    return false;
+  }
 };
 
 export const convert = (data: any): CustomerType => {

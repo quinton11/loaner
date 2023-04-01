@@ -17,9 +17,7 @@ export const HomePage = () => {
     useEffect(() => {
         if (!user) {
             fetchUser("user").then((res) => {
-                console.log(res)
                 if (res) {
-                    console.log(res)
                     setUser(res.data)
                 } else {
                     setSessionEnd(true)
@@ -32,7 +30,6 @@ export const HomePage = () => {
         <div className="dash--body">
             <div className="top--box">
                 <button className="loan--button" onClick={() => {
-                    console.log("Loan screen")
                     navigate("/user/loan/request")
                     /* setNewLoan(true) */
                 }}>New Loan</button>

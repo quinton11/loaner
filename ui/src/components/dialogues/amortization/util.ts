@@ -1,5 +1,5 @@
 import { LoanInfo, LoanPieItem } from "../../../interfaces/loan";
-
+import { GraphData } from "../../../interfaces/graph";
 
 export const optionsPie = {
   plugins: {
@@ -108,49 +108,21 @@ export const getPieItems = (loan: LoanInfo): LoanPieItem[] => {
   };
 
   pieItems.push(pItem, iItem);
-  console.log(pieItems);
   return pieItems;
 };
 
 export const getPieData = (loan: LoanInfo) => {
-  const periodicRate = (1 / 12) * (loan.rate / 100);
-  console.log(periodicRate);
-
-  //number of payments over loans lifetime
-  const numPayments = loan.duration * 12;
-  let monthlyPayment = monthlyPay(loan.principal, periodicRate, numPayments);
-  const principals = new Array<number>();
-  const interests = new Array<number>();
-  const amounts = new Array<number>();
-  const labels = new Array<number>();
-
-  var outstandingBalance = loan.principal;
-  var i = 0;
-  while (outstandingBalance > 0) {
-    //calc interest
-    let interest = outstandingBalance * periodicRate;
-    //calc payment
-    let principal = monthlyPayment - interest;
-
-    amounts.push(outstandingBalance);
-    interests.push(interest);
-    principals.push(principal);
-    labels.push(i + 1);
-
-    outstandingBalance -= principal + interest;
-    //monthlyPayment = monthlyPay(principal, periodicRate, numPayments);
-    i++;
-  }
+  const graphData = amortization(loan);
   const data: any = {
     labels: ["Principal", "Interest"],
     datasets: [
       {
         label: "value",
         data: [
-          principals.reduce(function (a, b) {
+          graphData.principals.reduce(function (a, b) {
             return a + b;
           }, 0),
-          interests.reduce(function (a, b) {
+          graphData.interests.reduce(function (a, b) {
             return a + b;
           }, 0),
         ],
@@ -163,12 +135,11 @@ export const getPieData = (loan: LoanInfo) => {
   return data;
 };
 
-export const calcAmortPlan = (loan: LoanInfo) => {
+const amortization = (loan: LoanInfo): GraphData => {
   //calculate payments of principal and interest for each month
   //calculate amount for each month
   //plot the data
   const periodicRate = (1 / 12) * (loan.rate / 100);
-  console.log(periodicRate);
 
   //number of payments over loans lifetime
   const numPayments = loan.duration * 12;
@@ -195,13 +166,21 @@ export const calcAmortPlan = (loan: LoanInfo) => {
     //monthlyPayment = monthlyPay(principal, periodicRate, numPayments);
     i++;
   }
-  console.log(interests.length);
-  console.log(principals.length);
-  console.log(amounts.length);
+
+  return {
+    principals: principals,
+    interests: interests,
+    amounts: amounts,
+    labels: labels,
+  };
+};
+
+export const calcAmortPlan = (loan: LoanInfo) => {
+  const graphData = amortization(loan);
 
   const pdata = {
     label: "principal",
-    data: principals,
+    data: graphData.principals,
     lineTension: 0,
     fill: false,
     borderColor: "#00cdbe",
@@ -209,7 +188,7 @@ export const calcAmortPlan = (loan: LoanInfo) => {
   };
   const idata = {
     label: "interest",
-    data: interests,
+    data: graphData.interests,
     lineTension: 0,
     fill: false,
     borderColor: "#ff7087",
@@ -218,7 +197,7 @@ export const calcAmortPlan = (loan: LoanInfo) => {
 
   const balance = {
     label: "balance",
-    data: amounts,
+    data: graphData.amounts,
     lineTension: 0,
     fill: false,
     borderColor: "white",
@@ -226,7 +205,7 @@ export const calcAmortPlan = (loan: LoanInfo) => {
   };
 
   const data: any = {
-    labels: labels.map((val) => `${val} mth`),
+    labels: graphData.labels.map((val) => `${val} mth`),
     datasets: [pdata, idata, balance],
     fontColor: "white",
   };

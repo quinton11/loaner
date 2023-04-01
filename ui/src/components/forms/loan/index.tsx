@@ -21,10 +21,7 @@ export const LoanForm = ({ setOpen, setSuccess }: any) => {
         setOpen(true)
         if (done) {
             //navigate to dashboard
-
             setSuccess(true)
-            console.log("Navigating back to dashboard")
-            //navigate(-1)
         } else {
             setSuccess(false)
         }

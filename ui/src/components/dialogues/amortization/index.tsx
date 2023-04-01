@@ -9,15 +9,15 @@ import { Chart as ChartJS, ArcElement, Tooltip, CategoryScale, LinearScale, Poin
 import { Pie, Line } from 'react-chartjs-2'
 import "./index.css"
 import { LoanInfo } from "../../../interfaces/loan";
-import { getYear, getMonth, getPieData, calcAmortPlan,options,optionsPie } from './util';
+import { getYear, getMonth, getPieData, calcAmortPlan, options, optionsPie } from './util';
 
 ChartJS.register(ArcElement, Tooltip, CategoryScale, LinearScale, PointElement, LineElement/* , Legend */);
 
 export const LoanAmortizationBox = ({ loan, open, set }: any) => {
     const l = loan as LoanInfo
-    
 
-    return <Dialog open={open} onClose={() => { }} >
+
+    return <Dialog open={open} onClose={() => { }} maxWidth={false} >
         <DialogTitle id="loan-dialogue-title">Loan - #{l.id}</DialogTitle>
         <DialogContent>
             <DialogContentText id="loan-dialogue-text">

@@ -7,8 +7,7 @@ import "./index.css"
 
 export const LoanCard = ({ loan, onClick }: any) => {
     const l = loan as LoanInfo
-    /* const [open, setOpen] = useState(false) */
-    console.log(l);
+    
     return <div className="loan--card" onClick={onClick}>
         <div className="card--balance">
             <div className="card--header">Amt:</div>

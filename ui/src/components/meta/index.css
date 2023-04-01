@@ -75,7 +75,7 @@
   display: flex;
   height: 80%;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding-left: 5px;
   padding-right: 5px;
@@ -105,6 +105,25 @@
   margin-top: 5px;
   font-size: 15px;
   color: #00cdbe;
+}
+
+.logout--button {
+  width: 90px;
+  height: 30px;
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ff7087;
+  color: white;
+}
+
+.logout--button:hover {
+  background-color: white;
+  color: #ff7087;
+  border: 2px solid #ff7087;
+  cursor: pointer;
 }
 
 #np-g {

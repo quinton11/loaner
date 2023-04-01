@@ -1,3 +1,4 @@
+
 #dialogue--box {
   background-color: #1f3458;
 }
@@ -30,7 +31,7 @@
 }
 
 .amort-content {
-  width: 500px;
+  width: 600px;
   height: 300px;
   background-color: #1f3458;
   display: flex;

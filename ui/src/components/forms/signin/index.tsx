@@ -19,11 +19,12 @@ export const SignInForm = () => {
 
         const done = await signIn("signin", convert(data))
         //on success, navigate to dashboard page
-        setSubmit(false)
         if (done) {
             //navigate to dashboard
-            console.log("Navigating ro dashboard")
             navigate("/dashboard")
+        } else {
+            setSubmit(false)
+
         }
     })}>
         <Bar name={"idCard"} register={register} errors={errors}
