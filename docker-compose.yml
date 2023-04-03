@@ -3,7 +3,7 @@ version: "3.8"
 services:
   nginx:
     depends_on:
-      - server
+      - backend
       - client
     build:
       dockerfile: Dockerfile
@@ -22,8 +22,8 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - server
-  server:
+      - backend
+  backend:
     build:
       dockerfile: Dockerfile
       context: ./server
