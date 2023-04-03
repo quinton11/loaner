@@ -6,8 +6,8 @@ import { connect, connectTest } from "./database/connect";
 import { AuthRouter } from "./routes/auth.route";
 import { CustomerRouter } from "./routes/user.route";
 import { LoanRouter } from "./routes/loan.route";
-import { SECRET } from "./config";
 import { CorsMiddleware } from "./middleware/cors.middleware";
+import { logger } from "service/logger";
 
 export default class Server {
   public port: number;
@@ -25,17 +25,17 @@ export default class Server {
   async initDatabase(test: boolean) {
     try {
       if (test) {
-        console.log("Connecting to Mock Database...");
+        logger.debug("Connecting to Mock Database...");
         const conn = await connectTest();
-        console.log(conn?.options.name);
-        console.log(conn?.options?.entities);
+        logger.debug(conn?.options.name);
+        //(conn?.options?.entities);
 
         return;
       }
       const conn = await connect();
-      console.log("Connected to Database");
-      console.log(conn?.options.name);
-      console.log(conn?.options?.entities);
+      logger.debug("Connected to Database");
+      logger.debug(conn?.options.name);
+      //console.log(conn?.options?.entities);
     } catch (err) {}
   }
 
@@ -60,7 +60,7 @@ export default class Server {
         console.log("= = = = = = = = = = = = = = = = = = = = = = = =");
       });
     } catch (err) {
-      console.error(err);
+      logger.error(err);
     }
   }
 

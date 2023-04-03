@@ -23,7 +23,7 @@
     "migration:run": "ts-node ./node_modules/typeorm/cli.js --config src/database/index.ts migration:run",
     "migration:create": "ts-node ./node_modules/typeorm/cli.js --config src/database/index.ts migration:create -n Initmigration",
     "migration:generate": "ts-node ./node_modules/typeorm/cli.js --config src/database/index.ts migration:generate -n Initmigration",
-    "test":"jest"
+    "test": "jest"
   },
   "dependencies": {
     "@types/cookie-parser": "^1.4.3",
@@ -36,6 +36,7 @@
     "jsonwebtoken": "^9.0.0",
     "pg": "^8.10.0",
     "supertest": "^6.3.3",
+    "ts-node": "^10.9.1",
     "typeorm": "0.2.34",
     "winston": "^3.8.2"
   }
