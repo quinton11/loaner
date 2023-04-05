@@ -114,7 +114,7 @@ export const getPieItems = (loan: LoanInfo): LoanPieItem[] => {
 export const getPieData = (loan: LoanInfo) => {
   const graphData = amortization(loan);
   const data: any = {
-    labels: ["Principal", "Interest"],
+    labels: ["Principal Paid", "Cumulative Interest"],
     datasets: [
       {
         label: "value",
@@ -139,7 +139,7 @@ const amortization = (loan: LoanInfo): GraphData => {
   //calculate payments of principal and interest for each month
   //calculate amount for each month
   //plot the data
-  const periodicRate = (1 / 12) * (loan.rate / 100);
+  const periodicRate = (1 / 12) * (loan.rate/100);
 
   //number of payments over loans lifetime
   const numPayments = loan.duration * 12;
@@ -150,16 +150,20 @@ const amortization = (loan: LoanInfo): GraphData => {
   const labels = new Array<number>();
 
   var outstandingBalance = loan.principal;
+  var accInterest = 0;
+  var accPrincipal = 0;
   var i = 0;
   while (outstandingBalance > 0) {
     //calc interest
     let interest = outstandingBalance * periodicRate;
+    accInterest += interest;
     //calc payment
     let principal = monthlyPayment - interest;
+    accPrincipal += principal + interest;
 
     amounts.push(outstandingBalance);
-    interests.push(interest);
-    principals.push(principal);
+    interests.push(accInterest);
+    principals.push(accPrincipal);
     labels.push(i + 1);
 
     outstandingBalance -= principal + interest;
@@ -179,7 +183,7 @@ export const calcAmortPlan = (loan: LoanInfo) => {
   const graphData = amortization(loan);
 
   const pdata = {
-    label: "principal",
+    label: "principal paid",
     data: graphData.principals,
     lineTension: 0,
     fill: false,
@@ -187,7 +191,7 @@ export const calcAmortPlan = (loan: LoanInfo) => {
     fontfamily: "Montserrat",
   };
   const idata = {
-    label: "interest",
+    label: "Cumulative interest",
     data: graphData.interests,
     lineTension: 0,
     fill: false,
