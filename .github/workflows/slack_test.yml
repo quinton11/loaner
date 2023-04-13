@@ -1,0 +1,15 @@
+name: Slack Notifier Test on Push
+
+on:
+  push:
+
+jobs:
+  notifier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Slack Notifier
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
+          SLACK_USERNAME: loaner-release
+          SLACK_ICON: https://github.com/Infisical/infisical/blob/main/frontend/public/images/logotransparent.png
