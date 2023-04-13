@@ -12,4 +12,8 @@ jobs:
         env:
           SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
           SLACK_USERNAME: loaner-release
-          SLACK_ICON: https://github.com/Infisical/infisical/blob/main/frontend/public/images/logotransparent.png
+          SLACK_ICON: ${{ secrets.SLACK_ICON }}
+          SLACK_TITLE: 'New Release! :rocket:' 
+          SLACK_MESSAGE: New Loaner release, version number.
+          SLACK_FOOTER: loaner analytics
+          MSG_MINIMAL: event
