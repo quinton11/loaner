@@ -16,4 +16,3 @@ jobs:
           SLACK_TITLE: 'New Release! :rocket:' 
           SLACK_MESSAGE: New Loaner release, version number.
           SLACK_FOOTER: loaner analytics
-          MSG_MINIMAL: event
