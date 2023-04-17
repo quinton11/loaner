@@ -11936,22 +11936,31 @@ function parseChannels(channels) {
 async function postMessages(slackClient, channels, msg) {
   const results = [];
 
-  const isBlock = typeof msg === Object;
+  const msgObj = JSON.parse(msg);
 
   for (var chan of channels) {
-    const chatPostArgs = { channel: chan,blocks: "Hello World from cli-test!" };
+    const chatPostArgs = {
+      channel: chan,
+      ...msgObj,
+    };
     const res = await slackClient.chat.postMessage(chatPostArgs);
-    results.push(res);
+    results.push(res.ok);
   }
   return results;
 }
 
-async function run() {
+async function action() {
   //get slack bot token
   try {
+    //inputs
     const botToken = core.getInput("BOT_TOKEN");
     if (!botToken) {
       throw "Slack bot token not provided";
+    }
+
+    const msg = core.getInput("MESSAGE");
+    if (!msg) {
+      throw "Message not provided";
     }
 
     //slack client
@@ -11966,22 +11975,15 @@ async function run() {
     //use only ids
     const channelIds = parseChannels(channels.channels);
 
-    const msg = core.getInput("MESSAGE");
-
-    //send message to all channels
-    //loop through channels and send message to them
-    const msgResp = await postMessages(
-      client,
-      channelIds,
-      msg ? msg : "Hello World from cli-test!"
-    );
+    //broadcast message to all channels
+    const msgResp = await postMessages(client, channelIds, msg);
     console.log(msgResp);
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
-run();
+action();
 
 })();
 

@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: acions/checkout@v2
-      - uses: .github/actions/slackbroadcast
+      - uses: ./.github/actions/slackbroadcast
         env:
           BOT_TOKEN: ${{secrets.SLACK_BOT_TOKEN}}
         with:
