@@ -11938,18 +11938,18 @@ async function postMessages(slackClient, channels, msg) {
 
   try {
     const msgObj = JSON.parse(msg);
+    for (var chan of channels) {
+      const chatPostArgs = {
+        channel: chan,
+        ...msgObj,
+      };
+      const res = await slackClient.chat.postMessage(chatPostArgs);
+      results.push(res.ok);
+    }
   } catch (err) {
     core.error(err);
   }
 
-  for (var chan of channels) {
-    const chatPostArgs = {
-      channel: chan,
-      ...msgObj,
-    };
-    const res = await slackClient.chat.postMessage(chatPostArgs);
-    results.push(res.ok);
-  }
   return results;
 }
 
