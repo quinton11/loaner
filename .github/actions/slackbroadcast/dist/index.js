@@ -11936,7 +11936,11 @@ function parseChannels(channels) {
 async function postMessages(slackClient, channels, msg) {
   const results = [];
 
-  const msgObj = JSON.parse(msg);
+  try {
+    const msgObj = JSON.parse(msg);
+  } catch (err) {
+    core.error(err);
+  }
 
   for (var chan of channels) {
     const chatPostArgs = {
@@ -11980,6 +11984,7 @@ async function action() {
     console.log(msgResp);
   } catch (err) {
     console.log(err);
+    core.error(err);
   }
 }
 

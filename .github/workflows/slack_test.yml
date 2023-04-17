@@ -11,4 +11,4 @@ jobs:
       - uses: ./.github/actions/slackbroadcast
         with:
           BOT_TOKEN: ${{secrets.SLACK_BOT_TOKEN}}
-          MESSAGE: '{text:"Hello Slack Test"}'
+          MESSAGE: '{"text":"Hello Slack Test"}'
