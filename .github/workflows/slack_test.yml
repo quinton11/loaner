@@ -4,16 +4,12 @@ on:
   push:
 
 jobs:
-  notifier:
+  slack-notifier:
     runs-on: ubuntu-latest
     steps:
-      - name: Slack Notifier
-        uses: rtCamp/action-slack-notify@v2
+      - uses: acions/checkout@v2
+      - uses: .github/actions/slackbroadcast
         env:
-          SLACK_WEBHOOK: ${{secrets.SLACK_WEBHOOK}}
-          SLACK_USERNAME: loaner-release
-          SLACK_ICON: ${{ secrets.SLACK_ICON }}
-          SLACK_TITLE: 'New Release! :rocket:' 
-          SLACK_MESSAGE: New Loaner release, version number.
-          SLACK_FOOTER: loaner analytics
-          MSG_MINIMAL: event
+          BOT_TOKEN: ${{secrets.SLACK_BOT_TOKEN}}
+        with:
+          MESSAGE: '{text:"Hello Slack Test"}'

@@ -1,0 +1,37 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\qsmit\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @vercel/ncc
+
+PATH: 
+  C:\Users\qsmit\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\qsmit\bin;C:\Python310\Scripts;C:\Python310;C:\Program Files\Android\Android Studio\jbr\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files\Microsoft MPI\Bin;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\WINDOWS\System32\OpenSSH;C:\Program Files\MiKTeX 2.9\miktex\bin\x64;C:\Program Files\MATLAB\R2018a\runtime\win64;C:\Program Files\MATLAB\R2018a\bin;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\Git\cmd;C:\Users\qsmit\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.8;C:\Users\qsmit\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.8\pip;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\IncrediBuild;C:\ProgramData\chocolatey\lib\gsudo\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Users\qsmit\.poetry\bin;C:\Program Files\PuTTY;C:\Program Files\nodejs;C:\Users\qsmit\AppData\Local\Yarn\bin;C:\quinton\ngrok-x64;C:\Program Files\Go\bin;C:\Program Files\MongoDB\Server\6.0\bin;C:\Users\qsmit\AppData\Roaming\Python\Python39\Scripts;C:\quinton\ffmpeg-5.1.1-essentials_build\bin;C:\Program Files\CMake\bin;C:\opencv\build\install\x64\mingw\bin;C:\Program Files\mingw64\bin;C:\protoc\bin;C:\Program Files\Tesseract-OCR;C:\Users\qsmit\AppData\Local\Android\Sdk\cmdline-tools\latest\bin;C:\Users\qsmit\AppData\Local\Pub\Cache\bin;C:\quinton\nginx-1.22.1;C:\quinton\jq;C:\Program Files\Docker\Docker\resources\bin;C:\Users\qsmit\scoop\shims;C:\Users\qsmit\.poetry\bin;C:\Users\qsmit\AppData\Local\Microsoft\WindowsApps;C:\Users\qsmit\AppData\Local\Programs\MiKTeX 2.9\miktex\bin\x64;C:\src\flutter\bin;C:\Users\qsmit\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.8;C:\Users\qsmit\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\qsmit\anaconda3;C:\Users\qsmit\anaconda3\Scripts;C:\Users\qsmit\AppData\Roaming\Python\Python39\Scripts;C:\Users\qsmit\.dotnet\tools;C:\Users\qsmit\AppData\Roaming\npm;C:\Users\qsmit\AppData\Local\Yarn\bin;C:\quinton\ngrok-x64;C:\Users\qsmit\go\bin;C:\Program Files\MongoDB\Server\6.0\bin;C:\quinton\ffmpeg-5.1.1-essentials_build\bin;C:\Program Files\mingw64\bin;C:\Users\qsmit\AppData\Local\Android\Sdk\cmdline-tools\latest\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.16.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
+
+npm manifest: 
+  {
+    "name": "slack-broadcast",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Quinton SMith",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
